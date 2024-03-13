@@ -58,3 +58,30 @@ FROM Bookings
 WHERE BookingDate = bookingdate AND TableNumber = tablenbr;
 
 CALL  CheckBooking("2024-03-13", 3); 
+
+-- ______________________________________________________________________
+-- Creating insert, update and delete procedures on little lemon bookings table
+-- Task 1
+-- Creating insert procedure
+delimiter //
+create procedure AddBooking(BookingId int, bookingdate date, tablenbr int, customerId int)
+insert into Bookings(BookingID, BookingDate, TableNumber, CustomerID)
+values(BookingId, bookingdate, tablenbr, customerId);
+select "New booking added" as Confirmation;
+end//
+delimiter ;
+
+-- ___________________________________________________________________________
+-- Task 2 
+-- Creating update procedure
+delimiter //
+create procedure UpdateBooking(BookingId int, bookingdate date)
+insert into Bookings(BookingID, BookingDate)
+values(BookingId, bookingdate);
+select "Booking updated" as Confirmation;
+end //
+delimiter ;
+
+-- ___________________________________________________________________________
+-- Task 3 
+-- Creating update procedure
