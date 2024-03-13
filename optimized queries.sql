@@ -76,12 +76,14 @@ delimiter ;
 -- Creating update procedure
 delimiter //
 create procedure UpdateBooking(BookingId int, bookingdate date)
-insert into Bookings(BookingID, BookingDate)
-values(BookingId, bookingdate);
+update Bookings 
+set BookingId = BookingId and bookingdate = bookingdate
+where BookingId = BookingId;
 select "Booking updated" as Confirmation;
 end //
 delimiter ;
 
 -- ___________________________________________________________________________
 -- Task 3 
--- Creating update procedure
+-- Creating delete procedure
+
