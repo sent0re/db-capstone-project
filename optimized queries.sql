@@ -41,3 +41,20 @@ end //
 delimiter ;
 
 call CancelOrder(2);
+
+-- _______________________________________________
+-- Booking system for Little Lemon
+-- Task 1
+-- create a stored procedure called CheckBooking to check whether a table 
+-- in the restaurant is already booked
+
+CREATE PROCEDURE CheckBooking(IN bookingdate DATE, IN tablenbr INT)
+SELECT 
+  CASE 
+    WHEN COUNT(*) > 0 THEN 'Table is already booked'
+    ELSE 'Table is available'
+  END AS BookingStatus
+FROM Bookings
+WHERE BookingDate = bookingdate AND TableNumber = tablenbr;
+
+CALL  CheckBooking("2024-03-13", 3); 
